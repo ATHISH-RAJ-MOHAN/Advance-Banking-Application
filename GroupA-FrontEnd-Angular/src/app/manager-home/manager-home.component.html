@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <!-- <div class="row">
+    <div class="col-12"> -->
+      <div
+        class="list-group list-group-horizontal p-3"
+        id="list-tab"
+        role="tablist"
+      >
+        <a
+          class="list-group-item list-group-item-action list-group-item-secondary active text-center"
+          id="list-home-list"
+          data-bs-toggle="list"
+          href="#list-home"
+          role="tab"
+          aria-controls="list-home"
+          >Pending</a
+        >
+        <a
+          class="list-group-item list-group-item-action list-group-item-success text-center"
+          id="list-profile-list"
+          data-bs-toggle="list"
+          href="#list-profile"
+          role="tab"
+          aria-controls="list-profile"
+          >Approved</a
+        >
+        <a
+          class="list-group-item list-group-item-action list-group-item-danger text-center"
+          id="list-messages-list"
+          data-bs-toggle="list"
+          href="#list-messages"
+          role="tab"
+          aria-controls="list-messages"
+          >Rejected</a
+        >
+      </div>
+    </div>
+    <!-- <div class="col-8"> -->
+      <div class="tab-content" id="nav-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="list-home"
+          role="tabpanel"
+          aria-labelledby="list-home-list"
+        >
+          <div class="card card-body">
+            <app-manager-enquiry-list
+              [enquiries]="enquiriesPending"
+              [Type]="'Pending'"
+            ></app-manager-enquiry-list>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="list-profile"
+          role="tabpanel"
+          aria-labelledby="list-profile-list"
+        >
+          <div class="card card-body">
+            <app-manager-enquiry-list
+              [enquiries]="enquiriesApproved"
+              [Type]="'Approved'"
+            ></app-manager-enquiry-list>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="list-messages"
+          role="tabpanel"
+          aria-labelledby="list-messages-list"
+        >
+          <div class="card card-body">
+            <app-manager-enquiry-list
+              [enquiries]="enquiriesRejected"
+              [Type]="'Rejected'"
+            ></app-manager-enquiry-list>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </div>
+  </div> -->
+</div>

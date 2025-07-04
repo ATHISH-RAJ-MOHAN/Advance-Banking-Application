@@ -1,0 +1,42 @@
+<div style="border-radius: 10px; overflow: hidden; margin-right:100px;">
+  <br>
+  <div class="row">
+    <div class="col-auto">
+      <button class="btn btn-success me-3" (click)="goToCreateAccountPage()">Create a new account</button>
+      
+    </div>
+  </div>
+  <br>
+
+  <h2>Manage your Accounts :</h2>
+  <br>
+
+  <div class="table-responsive" >
+    <table class="table table-dark table-striped table-hover" style="text-align:left; border-radius: 10px; overflow: hidden; margin-bottom: 100px;">
+      <thead>
+        <tr>
+          <th>AccountID</th>
+          <th>Account Type</th> 
+          <th>Account Balance</th> <!-- Added Account Balance column -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!accountList2 || accountList2.length === 0">
+          <td colspan="5" class="text-center">No data available</td> <!-- Updated colspan -->
+        </tr>
+        <tr *ngFor="let item of accountList2">
+          <td>{{ item.accountID }}</td>
+          <td>{{ item.type_id === 1 ? "Savings" : "Current" }}</td>
+          <td>{{ item.balance }}</td> <!-- Displaying the account balance -->
+          <td>
+            <button class="btn btn-info btn-sm" (click)="viewDetails(item.accountID, item.customerID)">View Details</button>&nbsp;
+            <button class="btn btn-secondary btn-sm" (click)="Transaction(item.accountID)">Transaction History</button>&nbsp;
+            <button class="btn btn-danger btn-sm" (click)="deleteAccount(item.accountID)">Delete</button>&nbsp;
+            <button *ngIf="!item.hasCheque" class="btn btn-success btn-sm" (click)="applyForCheque(item.accountID)">Apply for Cheque</button>&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div >
+</div>

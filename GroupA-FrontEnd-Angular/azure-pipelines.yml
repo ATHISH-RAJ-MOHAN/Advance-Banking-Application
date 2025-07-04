@@ -1,0 +1,79 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+
+trigger:
+- master
+
+stages: 
+- stage: Build
+  jobs: 
+  - job: Build 
+    pool: angular-agent-pool
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+      displayName: 'Install Node.js'
+
+    # - script: |
+    #     cd AngularApp/
+    #     npm install -g @angular/cli
+    #     npm install
+    #     ng build --prod
+    #   displayName: 'npm install and build'
+
+    - script: |
+        npm install -g @angular/cli
+      displayName: 'Install Angular CLI'
+    - task: Npm@1 
+      displayName: 'Install Angular App packages'
+      inputs:
+        command: ci
+    - task: Npm@1
+      displayName: 'Build the App'
+      inputs:
+        command: custom
+        verbose: false
+        customCommand: 'run build'
+    - task : ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs: 
+        rootFolderOrFile: 'dist/banking-app-angular/browser'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: '$(Build.ArtifactStagingDirectory)/banking-app-angular.zip'
+        replaceExistingArchive: true
+    - task: PublishPipelineArtifact@1
+      inputs: 
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'banking-app-angular.zip'
+        publishLocation: pipeline
+
+- stage: Deployment
+  displayName: 'Deploy to Azure Deployment'
+  condition: succeeded()
+  dependsOn: Build
+  jobs: 
+  - deployment: Deployment
+    pool: angular-agent-pool
+    environment: Development
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'banking-app-angular.zip'
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+            
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'ESP-Azure-Sub-1(2)(061812e5-2eb1-4d6d-a492-d9d4881b86ea)'
+              appType: 'webApp'
+              WebAppName: 'GroupA-PCTbank'
+              packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'

@@ -1,0 +1,33 @@
+
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-12"> <!-- Expanded column width -->
+      <div class="card login-box" style="background-color:#f0f0f0; margin: 0px; padding: 80px;">
+        <div class="card-body">
+          <h2 class="text-center">Log In</h2>
+
+          <div class="text-center login-key" style="font-size: 48px;"> <!-- Increased font size -->
+            <i class="fa fa-key" aria-hidden="true"></i>
+          </div>
+          <form (ngSubmit)="login()">
+            <div class="mb-5"> <!-- Increased margin -->
+              <label for="email" class="form-label" style="font-size: 32px;">Email:</label> <!-- Increased font size -->
+              <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control form-control-lg" style="font-size: 24px;" required> <!-- Increased input size and font size -->
+            </div>
+            <div class="mb-5"> <!-- Increased margin -->
+              <label for="password" class="form-label" style="font-size: 32px;">Password:</label> <!-- Increased font size -->
+              <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control form-control-lg" style="font-size: 24px;" required> <!-- Increased input size and font size -->
+            </div>
+            <button type="submit" class="btn btn-primary mb-4" style="font-size: 24px;">Login</button>
+            &nbsp;
+            <a routerLink="/home" class="btn btn-primary mb-4" style="font-size: 24px;">Back to Home</a> <!-- Added back button -->
+            <!-- Increased button size and font size -->
+          </form>
+          <p *ngIf="errorMessage" class="error-message" style="font-size: 24px;">{{ errorMessage }}</p> <!-- Increased font size -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

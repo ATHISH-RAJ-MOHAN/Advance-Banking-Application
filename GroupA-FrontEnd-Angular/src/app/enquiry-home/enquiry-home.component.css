@@ -1,0 +1,31 @@
+.card {
+  margin: 20px auto; /* Center the card */
+  max-width: 600px; /* Set maximum width for better readability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+.card-header {
+  background-color: lightblue; /* Background color for the card header */
+}
+
+.card-body {
+  color: rgb(51, 49, 179);
+  background-color: #f0f0f0; /* Background color for the card body */
+  padding: 20px; /* Add some padding for content */
+}
+.custom-heading {
+    color: rgb(51, 49, 179);
+    font-family: 'Arial', Times, serif;
+    font-weight: bold;
+    font-size: 18px; /* Adjust the font size as needed */
+  }
+  
+  .custom-button {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  .custom-button:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+  }
+  
+  

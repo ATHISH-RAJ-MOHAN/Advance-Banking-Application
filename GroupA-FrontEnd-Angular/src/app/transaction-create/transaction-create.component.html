@@ -1,0 +1,49 @@
+<div style="background-color: rgb(157, 206, 252); padding-top: 20px; padding-bottom: 20px; border-radius: 10px; overflow: hidden; margin: 20px;">
+    <div style="background-color:rgb(204, 231, 255);   margin-left: 80px;margin-right: 80px; border-radius: 10px; padding-bottom: 20px;">
+      <h2 style="text-align: center;">Transfer Funds</h2>
+      <form style="margin: 0 auto; width: 90%;border-radius: 10px;" (ngSubmit)="onSubmit()">
+        <div style="margin-bottom: 15px; border-radius: 10px;" >
+          <label style="padding: 10px;" for="sourceAccount" >Source Account Id:</label>
+          <input
+            type="number"
+            id="sourceAccount"
+            [(ngModel)]="sourceAccount"
+            name="sourceAccount"
+            required
+            style="width: 100%; padding: 5px;border-radius: 10px;"
+          />
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="padding: 10px;"for="destinationAccount">Destination Account Id:</label>
+          <input
+            type="number"
+            id="destinationAccount"
+            [(ngModel)]="destinationAccount"
+            name="destinationAccount"
+            required
+            style="width: 100%; padding: 5px;border-radius: 10px;"
+          />
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="padding: 10px;"for="amount">Amount:</label>
+          <input
+            type="number"
+            id="amount"
+            [(ngModel)]="amount"
+            name="amount"
+            required
+            style="width: 100%; padding: 5px;border-radius: 10px;"
+          />
+        </div>
+        <bR>
+        <button type="submit" style="width: 30%;" class="btn btn-primary">Transfer</button>
+        <br>
+      </form>
+    </div>
+    <bR>
+    <div class="text-center mt-3">
+      <button class="btn btn-primary" (click)="goBack()">Back</button>
+    </div>
+    <br>
+  </div>
+  

@@ -1,0 +1,40 @@
+<div style="background-color: rgb(157, 206, 252); padding-top: 20px;padding-bottom: 20px;border-radius: 10px; overflow: hidden; margin: 20px;">
+  <div class="container" style="background-color:  rgb(204, 231, 255); border-radius: 10px;padding-bottom: 20px;">
+    <h2>Create New Account</h2>
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="accountBalance" class="form-label">Account Balance<p style="font-size: 0.8em;">[MIN REQUIREMENT: with cheque: Savings: 5000 Current: 10000 || without: Savings: 1000 Current: 5000]</p></label>
+        <input type="number" class="form-control" id="accountBalance" formControlName="balance">
+      </div>
+      <div class="mb-3">
+        <label for="hasCheque" class="form-label">Has Cheque</label>
+        <select class="form-control" id="hasCheque" formControlName="hasCheque">
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Customer ID</label>
+        <input type="number" class="form-control" id="customerId" formControlName="customerId">
+      </div>
+      <div class="mb-3">
+        <label for="accountType" class="form-label">Account Type</label>
+        <select class="form-control" id="accountType" formControlName="accountType">
+          <option value="1">Savings</option>
+          <option value="2">Current</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="branchName" class="form-label">Branch Name</label>
+        <input type="text" class="form-control" id="branchName" formControlName="branchName">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+        &nbsp;
+        <button class="btn btn-secondary" (click)="goToAccountsPage()">Back</button>
+      
+    </form>
+  </div>
+  <br>
+  <br>
+  </div>  
+  

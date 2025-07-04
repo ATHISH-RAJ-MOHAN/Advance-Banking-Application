@@ -1,0 +1,152 @@
+<body style="background-color: #f0f0f0; margin: 0; padding: 0;">
+  <div class="container-fluid" style="background-color: #f0f0f0;">
+    <div class="text-center">
+      <br>
+      <h2 style="padding: 0px; border-radius: 5px;">ENQUIRY FORM</h2>
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color: rgb(157, 206, 252); border-radius: 10px; padding: 20px; overflow: hidden; margin: 20px;">
+    <div class="row">
+      <div class="col-12">
+        <form class="enquiry-form" [formGroup]="enquiryForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="fName">First Name:</label>
+              <input type="text" class="form-control" id="fName" formControlName="fName" />
+              <div *ngIf="enquiryForm.get('fName')?.errors?.['required']" class="text-danger">First Name Required</div>
+            </div>
+  
+            <div class="form-group">
+              <label for="lName">Last Name:</label>
+              <input type="text" class="form-control" id="lName" formControlName="lName" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="address1">Address Line 1:</label>
+              <input type="text" class="form-control" id="address1" formControlName="address1" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="address2">Address Line 2:</label>
+              <input type="text" class="form-control" id="address2" formControlName="address2" />
+            </div>
+  
+            <div class="form-group">
+              <label for="address3">Address Line 3:</label>
+              <input type="text" class="form-control" id="address3" formControlName="address3" />
+            </div>
+  
+            <div class="form-group">
+              <label for="city">City:</label>
+              <input type="text" class="form-control" id="city" formControlName="city" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" class="form-control" id="country" formControlName="country" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="pincode">Pincode:</label>
+              <input type="number" class="form-control" id="pincode" formControlName="pincode" required />
+              <!-- <div *ngIf="enquiryForm.get('pincode')?.errors?.['invalidPincode']" class="text-danger">
+        Please enter a valid 6-digit pincode (no leading zero)
+      </div> -->
+            </div>
+  
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number:</label>
+              <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" />
+              <!-- Display error message if phone number is required and not provided -->
+              <div *ngIf="enquiryForm.get('phoneNumber')?.errors?.['required']" class="text-danger">
+                Phone Number is required
+              </div>
+              <!-- Display error message if phone number format is invalid -->
+              <div *ngIf="enquiryForm.get('phoneNumber')?.errors?.['invalidPhoneNumber']" class="text-danger">
+                Please enter a valid 10-digit phone number
+              </div>
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="text" class="form-control" id="email" formControlName="email" [readonly]="true" />
+            </div>
+  
+            <div class="form-group">
+              <label for="DOB">Date of Birth</label>
+              <input type="date" class="form-control" id="DOB" formControlName="DOB" [max]="maxDate"/>
+              <div *ngIf="enquiryForm.get('DOB')?.errors?.['required']" class="text-danger">DoB Required</div>
+            </div>
+            
+            <div class="form-group">
+              <label for="wantsCheque">Wants Cheque:</label>
+              <input type="checkbox" class="form-check-input" id="wantsCheque" formControlName="wantsCheque"  style="width:1px;height:1px; background-color: black;"/>
+            </div>
+            
+            <div class="form-group">
+              <label for="accountType">Account Type:</label>
+              <div class="dropdown">
+                  <select class="form-control dropdown-toggle" id="accountType" formControlName="accountType" (change)="onAccountTypeChange()" required>
+                      <option value="" disabled selected>Select Account Type</option>
+                      <option value="Savings">Savings</option>
+                      <option value="Current">Current</option>
+                  </select>
+                  <div *ngIf="enquiryForm.get('accountType')?.errors?.['required']" class="text-danger">AccountType Required</div>
+              </div>
+          </div>
+          
+  
+            <div class="form-group">
+              <label for="balance">Balance:</label>
+              <input type="number" class="form-control" id="balance" formControlName="balance" required />
+              <div *ngIf="enquiryForm.get('balance')?.errors?.['required']" class="text-danger">Balance Required</div>
+              <div *ngIf="enquiryForm.get('balance')?.errors?.['min'] && enquiryForm.get('balance')?.dirty"
+                class="text-danger">
+                {{ getMinBalanceErrorMessage() }}
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="documentPanCardFile">Pan Card Document</label>
+              <input type="file" class="form-control" id="documentPanCardFile" (change)="onPanCardChange($event)"
+                formControlName="documentPanCardFile" />
+  
+              <img [src]="imageSrc3" style="max-width: 50%; height: auto;" />
+  
+              <!-- <div *ngIf="enquiryForm.get('documentPanCardFile')?.errors?.['required']  && !imageSrc3" class="text-danger">PanCard Required</div> -->
+              <div *ngIf="enquiryForm.get('documentPanCardFile')?.errors?.['required'] " class="text-danger">PanCard
+                Required</div>
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="documentPhotoFile">Document Photo</label>
+              <input type="file" class="form-control" id="documentPhotoFile" (change)="onPhotoChange($event)"
+                formControlName="documentPhotoFile" />
+                <img [src]="imageSrc1" style="max-width: 50%; height: auto;" />
+                <!-- <div *ngIf="enquiryForm.get('documentPhotoFile')?.errors?.['required'] && !imageSrc1" class="text-danger">Photo Required</div> -->
+                <div *ngIf="enquiryForm.get('documentPhotoFile')?.errors?.['required']" class="text-danger">Photo Required
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="documentAadharFile">Aadhar Document</label>
+              <input type="file" class="form-control" id="documentAadharFile" (change)="onAadharChange($event)"
+                formControlName="documentAadharFile" />
+  
+              <img [src]="[imageSrc2]" style="max-width: 50%; height: auto;" />
+  
+              <!-- <div *ngIf="enquiryForm.get('documentAadharFile')?.errors?.['required'] && !imageSrc2" class="text-danger">Aadhar Required</div> -->
+              <div *ngIf="enquiryForm.get('documentAadharFile')?.errors?.['required']" class="text-danger">Aadhar Required
+              </div>
+            </div>
+  
+            <div class="text-center">
+              <button type="button" (click)="onSave()" [disabled]="isSaveDisabled()" class="btn btn-primary" style="width: auto; padding: 10px 20px; font-size: 16px; margin-top: 20px;">Save</button>
+              <button type="submit" [disabled]="enquiryForm.invalid" class="btn btn-primary" style="width: auto; padding: 10px 20px; font-size: 16px; margin-top: 20px;">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>

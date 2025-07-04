@@ -1,0 +1,37 @@
+<div style="background-color: rgb(157, 206, 252); border-radius: 10px; overflow: hidden; margin: 20px;">
+  <br>
+  <h3 style="text-align: center;">Transaction History</h3>
+  <br>
+  <div class="table-responsive" style="padding: 0 50px;">
+    <table class="table table-dark table-striped table-hover" style="text-align:left; border-radius: 10px; overflow: hidden;">
+      <thead>
+        <tr>
+          <th>Serial Number</th>
+          <th>Amount</th>
+          <th>Time</th>
+          <th>Source Account</th>
+          <th>Destination Account</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="transactions.length === 0">
+          <td colspan="5" class="text-center text-danger" style="background-color: rgb(35, 35, 35);">
+            No data available
+          </td>
+        </tr>
+        <tr *ngFor="let transaction of transactions; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.time }}</td>
+          <td>{{ transaction.source_acc }}</td>
+          <td>{{ transaction.dest_acc }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-center m-3">
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+    &nbsp;
+    <button class="btn btn-success" (click)="downloadFile()">Download</button>
+  </div>
+</div>

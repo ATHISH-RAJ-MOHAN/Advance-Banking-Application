@@ -1,0 +1,106 @@
+body {
+  background-color: #f0f0f0;
+  width: 100%;
+  height: 350vh;
+  border-color: black;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  margin-bottom: 20px; /* Add some margin below the header */
+}
+
+.header {
+  color: rgba(231, 63, 63, 0.929);
+  background-color: blue;
+  font-family: "Times New Roman", Times, serif; /* Set font to Times New Roman */
+  font-weight: bold; /* Make text bold */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.text-danger {
+  color: red;
+}
+
+.enquiry-form {
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 20px auto; /* Center the form and add some margin at the top and bottom */
+  max-width: 600px; /* Limit the form width */
+}
+
+.enquiry-form label {
+  font-weight: bold; /* Make labels bold */
+  display: block; /* Ensure labels are block elements */
+  margin-bottom: 5px; /* Space between label and input */
+}
+
+.enquiry-form .form-control {
+  border-radius: 5px; /* Rounded corners for inputs */
+  border: 1px solid #ccc; /* Match input border to form border */
+  padding: 10px; /* Add padding inside inputs */
+}
+
+.enquiry-form .btn {
+  background-color: #28a745; /* Bootstrap success color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for button */
+  padding: 10px 20px; /* Adjust button padding */
+  color: #fff; /* White text color */
+  font-weight: bold; /* Bold text */
+}
+
+.enquiry-form .btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.enquiry-form .text-danger {
+  font-size: 0.9em; /* Smaller font for error messages */
+  margin-top: 5px; /* Space above error messages */
+}
+
+.btn-spacing button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+.text-center.btn-spacing {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* This will create equal spacing between the buttons */
+}

@@ -1,0 +1,13 @@
+<div class="card shadow m-auto m-2">
+    <div class="card-header text-center d-flex" 
+        [ngClass]="{'bg-secondary': Type == 'Pending', 
+                    'bg-success': Type == 'Approved',
+                    'bg-danger': Type == 'Rejected'}">
+            <div class="fs-3 text-uppercase flex-grow-1">{{ Type }} Requests</div>
+    </div>
+    <div class="m-auto m-10 card-body overflow-y-visible">
+        <div class="list-group" *ngFor="let enquiry of enquiries">
+            <a [routerLink]="['/manager', enquiry.enquiryId]" class="list-group-item list-group-item-action mb-2 h4 bg-light text-center">{{ enquiry.fullName | titlecase }}</a>
+        </div>
+    </div>
+</div>

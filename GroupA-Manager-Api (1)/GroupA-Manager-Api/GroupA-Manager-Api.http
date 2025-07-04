@@ -1,0 +1,6 @@
+@GroupA_Manager_Api_HostAddress = http://localhost:5224
+
+GET {{GroupA_Manager_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

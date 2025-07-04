@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Delete Account</h2>
+
+  <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="accountId" class="form-label">Account ID:</label>
+      <input id="accountId" formControlName="accountId" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-danger" [disabled]="isSubmitting">Delete Account</button>
+  </form>
+
+  <div *ngIf="confirmDelete" class="mt-4">
+    <div class="alert alert-danger" role="alert">
+      <p>Are you sure you want to deactivate account ID {{ accountId }}?</p>
+      <button (click)="confirmDeletion()" class="btn btn-danger" [disabled]="isSubmitting">Yes, deactivate</button>
+      <button (click)="cancelDeletion()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+</div>

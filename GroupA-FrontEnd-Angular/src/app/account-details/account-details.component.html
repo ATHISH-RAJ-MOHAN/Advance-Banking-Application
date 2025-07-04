@@ -1,0 +1,41 @@
+<div style="background-color: rgb(157, 206, 252);;border-radius: 10px;padding: 20px; overflow: hidden; margin: 20px;">
+  <div *ngIf="account" class="details-container p-3" >
+    <form class="card  text-dark" style="max-width: 100rem; background-color: rgb(204, 231, 255);" >
+      <div class="card-body">
+        <h5 class="card-title">Account ID: {{ account.accountID }}</h5>
+        <div class="form-group">
+          <label for="accountBalance"><strong>Account Balance:</strong></label>
+          <input type="text" id="accountBalance" class="form-control bg-white text-dark" [value]="account.balance" readonly>
+        </div>
+        <div class="form-group">
+          <label for="hasCheque"><strong>Has Cheque:</strong></label>
+          <input type="text" id="hasCheque" class="form-control bg-white text-dark" [value]="account.hasCheque ? 'Yes' : 'No'" readonly>
+        </div>
+        <div class="form-group">
+          <label for="wdQuota"><strong>WD Quota:</strong></label>
+          <input type="text" id="wdQuota" class="form-control bg-white text-dark" [value]="account.wd_quota" readonly>
+        </div>
+        <div class="form-group">
+          <label for="dpQuota"><strong>DP Quota:</strong></label>
+          <input type="text" id="dpQuota" class="form-control bg-white text-dark" [value]="account.dp_quota" readonly>
+        </div>
+        <div class="form-group">
+          <label for="customerID"><strong>Customer ID:</strong></label>
+          <input type="text" id="customerID" class="form-control bg-white text-dark" [value]="account.customerID" readonly>
+        </div>
+        <div class="form-group">
+          <label for="typeId"><strong>Account Type:</strong></label>
+          <input type="text" id="typeId" class="form-control bg-white text-dark" [value]="account.type_id === 1 ? 'Savings' : 'Current'" readonly>
+        </div>
+        <div class="form-group">
+          <label for="branchID"><strong>Branch ID:</strong></label>
+          <input type="text" id="branchID" class="form-control bg-white text-dark" [value]="account.branchID.trim()" readonly>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div class="text-center mt-3">
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+  </div>

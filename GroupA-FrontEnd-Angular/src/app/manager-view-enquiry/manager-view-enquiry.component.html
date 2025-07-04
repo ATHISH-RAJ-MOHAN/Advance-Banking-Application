@@ -1,0 +1,122 @@
+<!-- <div *ngIf="EnquiryDetais.emailAddress == null" class="spinner-wrapper">
+  <div class="spinner-border text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div> -->
+<ngx-spinner bdColor = "rgb(1,1,1)" size = "large" color = "#8e2929" type = "timer" [fullScreen] = "true"><p style="color: white" > Getting Data... </p></ngx-spinner>
+
+<app-popup *ngIf="isPopupVisible" (close)="closePopup($event)" (onCancel)="ResetPopup()"></app-popup>
+
+<div class="container-fluid g-0 p-2">
+  <div class="row g-0">
+    <div class="col-md-2 d-flex justify-content-center align-items-center">
+      <img
+        [src] = "imageSrc1"
+        alt="Profile Image"
+        class="profile"
+      />
+    </div>
+    <div class="col ps-2">
+      <div class="row g-0">
+        <div class="col text-center h1">
+            {{ EnquiryDetais.firstName | titlecase }} {{ EnquiryDetais.lastName | titlecase }}
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col-5 h3 text-center">
+            Contact - {{ EnquiryDetais.phoneNumber }}
+        </div>
+        <div class="col-5 h3 text-center">
+            Email - {{ EnquiryDetais.emailAddress }}
+        </div>
+      </div>
+      
+    </div>
+    <div class="row mt-3">
+      <div class="col-md">
+        <table class="table table-borderless mx-auto">
+          <thead class="text-center fs-5 fst-italic text-secondary">
+            <tr>
+              <td colspan="2">Personal Details</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Birthdate</td>
+              <td>{{ EnquiryDetais.dateOfBirth }}</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>{{EnquiryDetais.addressLine1}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>{{EnquiryDetais.addressLine2}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>{{EnquiryDetais.addressLine3}}</td>
+            </tr>
+            <tr>
+              <td>City and Country</td>
+              <td>{{ EnquiryDetais.city | titlecase }}, {{ EnquiryDetais.country | titlecase}}</td>
+            </tr>
+            <tr>
+              <td>Pincode</td>
+              <td>{{ EnquiryDetais.pinCode}}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+      <div class="col">
+        <table class="table table-borderless mx-auto">
+          <thead class="text-center fs-5 fst-italic text-secondary">
+            <tr>
+              <td colspan="2">Account Details</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Balance</td>
+              <td>{{ EnquiryDetais.balance }}</td>
+            </tr>
+            <tr>
+              <td>Account Type</td>
+              <td *ngIf="EnquiryDetais.accountType=='1'">Savings</td>
+              <td *ngIf="EnquiryDetais.accountType=='2'">Current</td>
+            </tr>
+            <tr>
+              <td>Wants a Cheque Book</td>
+              <td *ngIf="EnquiryDetais.wantsCheque">Yes</td>
+              <td *ngIf="EnquiryDetais.wantsCheque!=null && !EnquiryDetais.wantsCheque">No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <img
+          [src]="imageSrc2"
+          alt="Profile Image"
+          class="doc"
+        />
+      </div>
+      <div class="col">
+        <img
+          [src]="imageSrc3"
+          alt="Profile Image"
+          class="doc"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div *ngIf="isPending" class="btn-group">
+        <button class="btn btn-lg btn-success" (click)="onApprove()" >Approve</button>
+        <button class="btn btn-lg btn-danger" (click)="onReject()">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>
