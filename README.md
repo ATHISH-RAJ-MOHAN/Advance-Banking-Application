@@ -53,12 +53,12 @@ The system is organized into multiple independent services, allowing separation 
                              │
         ┌────────────────────┼────────────────────┐
         │                    │                    │
-        ▼                    ▼                    ▼
+        V                    V                    V
 ┌─────────────┐     ┌────────────────┐   ┌──────────────┐
 │ Auth API    │     │ Customer API   │   │ Manager API  │
 └─────────────┘     └────────────────┘   └──────────────┘
                              │
-                             ▼
+                             V
                     ┌────────────────┐
                     │ SQL Database   │
                     └────────────────┘
