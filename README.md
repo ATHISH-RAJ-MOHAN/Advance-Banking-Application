@@ -47,21 +47,19 @@ The system is organized into multiple independent services, allowing separation 
 ##  System Architecture
 
 ```text
-                    ┌─────────────────┐
-                    │ Angular Frontend│
-                    └────────┬────────┘
-                             │
-        ┌────────────────────┼────────────────────┐
-        │                    │                    │
-        V                    V                    V
-┌─────────────┐     ┌────────────────┐   ┌──────────────┐
-│ Auth API    │     │ Customer API   │   │ Manager API  │
-└─────────────┘     └────────────────┘   └──────────────┘
-                             │
-                             V
-                    ┌────────────────┐
-                    │ SQL Database   │
-                    └────────────────┘
+    Angular Frontend
+        |
+        V
+Authentication API
+        |
+        V
+Customer / Account / Transaction API
+        |
+        V
+Manager API
+        |
+        V
+SQL Database
 ```
 
 ---
