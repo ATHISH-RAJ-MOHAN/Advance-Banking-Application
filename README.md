@@ -50,16 +50,16 @@ The system is organized into multiple independent services, allowing separation 
     Angular Frontend
         |
         V
-Authentication API
+    Authentication API
         |
         V
-Customer / Account / Transaction API
+    Customer / Account / Transaction API
         |
         V
-Manager API
+    Manager API
         |
         V
-SQL Database
+    SQL Database
 ```
 
 ---
